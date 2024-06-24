@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Implement the functionality to hide all circles of the same color and add them to the "Filtered Colors" section.
 - Implement the "Clear All" button to remove all filters.
 
-![] (https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png)
+![image] (https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png)
 
 ## Available Scripts
 
