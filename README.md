@@ -13,7 +13,14 @@ This is a simple React application that fetches data from the provided URLs and 
 - Implement the functionality to hide all circles of the same color and add them to the "Filtered Colors" section.
 - Implement the "Clear All" button to remove all filters.
 
+### Wireframe Design
 ![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png?raw=true)
+
+### Actual Site
+
+
+### Video Showcase
+
 
 ## Available Scripts
 
