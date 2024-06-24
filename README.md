@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Implement the functionality to hide all circles of the same color and add them to the "Filtered Colors" section.
 - Implement the "Clear All" button to remove all filters.
 
-![image] (https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png)
+![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png?raw=true)
 
 ## Available Scripts
 
@@ -23,9 +23,12 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
+The page will reload when you make changes.
 
 ### `npm install`
 
 Install all dependencies.
+
+### `npm run test`
+
+Run Jest tests.
