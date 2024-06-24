@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import DataLoadingSection from './DataLoadingSection';
+import FilteredColorsSection from './FilteredColorsSection';
 
+// URLs to fetch data from
 const DATA_URLS = [
   'https://gabriel2761.github.io/data/circles.json',
   'https://gabriel2761.github.io/data/circles2.json'
 ];
 
 function App() {
+  // State to store fetched data
   const [data, setData] = useState([]);
+  // State to store loading status of each dataset
   const [loadingStatus, setLoadingStatus] = useState([false, false]);
+  // State to store filtered colors
   const [filteredColors, setFilteredColors] = useState([]);
 
+  // Effect to fetch data from provided URLs
   useEffect(() => {
     DATA_URLS.forEach((url, index) => {
       fetch(url)
         .then(response => response.json())
         .then(data => {
+          // Append fetched data to existing data
           setData(prevData => [...prevData, ...data]);
+          // Update loading status to true for successful fetch
           setLoadingStatus(prevStatus => {
             const newStatus = [...prevStatus];
             newStatus[index] = true;
@@ -24,6 +32,7 @@ function App() {
           });
         })
         .catch(() => {
+          // Update loading status to false for failed fetch
           setLoadingStatus(prevStatus => {
             const newStatus = [...prevStatus];
             newStatus[index] = false;
@@ -33,49 +42,40 @@ function App() {
     });
   }, []);
 
+  // Function to handle circle click event
   const handleCircleClick = color => {
+    // Add clicked color to filtered colors
     setFilteredColors([...filteredColors, color]);
   };
 
+  // Function to handle filter removal
   const handleFilterRemove = color => {
+    // Remove the specified color from filtered colors
     setFilteredColors(filteredColors.filter(c => c !== color));
   };
 
+  // Function to clear all filters
   const handleClearAll = () => {
+    // Reset filtered colors to an empty array
     setFilteredColors([]);
   };
 
+  // Function to check if a color is filtered
   const isColorFiltered = color => filteredColors.includes(color);
 
   return (
     <div className="App">
-      <div className="data-loading-section">
-        <h2>Data Loading Section</h2>
-        {DATA_URLS.map((url, index) => (
-          <div key={index}>
-            {loadingStatus[index] ? (
-              <span>✔ Dataset {index + 1}</span>
-            ) : (
-              <span>✖ Dataset {index + 1}</span>
-            )}
-          </div>
-        ))}
+      {/* Sidebar containing data loading and filtered colors sections */}
+      <div className="sidebar">
+        <DataLoadingSection loadingStatus={loadingStatus} />
+        <FilteredColorsSection 
+          filteredColors={filteredColors} 
+          handleFilterRemove={handleFilterRemove} 
+          handleClearAll={handleClearAll} 
+        />
       </div>
 
-      <div className="filtered-colors-section">
-        <h2>Filtered Colours</h2>
-        {filteredColors.map(color => (
-          <div key={color} className="filtered-color">
-            <span
-              className="color-circle"
-              style={{ backgroundColor: color }}
-              onClick={() => handleFilterRemove(color)}
-            ></span>
-          </div>
-        ))}
-        <button onClick={handleClearAll}>Clear All</button>
-      </div>
-
+      {/* Section containing circles */}
       <div className="circles-section">
         {data.map(item => (
           !isColorFiltered(item.color) && (
