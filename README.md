@@ -17,7 +17,7 @@ This is a simple React application that fetches data from the provided URLs and 
 ![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png?raw=true)
 
 ### Actual Site
-
+![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/actualPage.png)
 
 ### Video Showcase
 
@@ -28,9 +28,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-The page will reload when you make changes.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
 ### `npm install`
 
