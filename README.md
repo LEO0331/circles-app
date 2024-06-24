@@ -20,7 +20,7 @@ This is a simple React application that fetches data from the provided URLs and 
 ![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/actualPage.png)
 
 ### Video Showcase
-
+https://github.com/LEO0331/circles-app/assets/25032781/bc899802-257f-4050-b729-fa82c2a2c026
 
 ## Available Scripts
 
