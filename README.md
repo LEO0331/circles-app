@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This is a React application that fetches data from the provided URLs and updates the UI based on the wireframe design.
+This is a simple React application that fetches data from the provided URLs and updates the UI based on the wireframe design.
 
 ### Fetch Data:
 
@@ -32,3 +32,5 @@ Install all dependencies.
 ### `npm run test`
 
 Run Jest tests.
+
+![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/test.png?raw=true)
