@@ -62,4 +62,32 @@ describe('App', () => {
       expect(screen.getByRole('button', { name: 'Filter color #ff0000' })).toBeInTheDocument();
     });
   });
+
+  test('shows error status for failed dataset and allows removing a single filtered color', async () => {
+    global.fetch = jest
+      .fn()
+      .mockRejectedValueOnce(new Error('network failed'))
+      .mockResolvedValueOnce({
+        json: () => Promise.resolve([{ id: 10, color: '#123456' }, { id: 11, color: '#abcdef' }])
+      });
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(screen.getByText('ERR')).toBeInTheDocument();
+      expect(screen.getByText('OK')).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Filter color #123456' }));
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Remove filter #123456' })).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Remove filter #123456' }));
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Filter color #123456' })).toBeInTheDocument();
+    });
+  });
 });
