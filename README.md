@@ -53,6 +53,6 @@ Install all dependencies.
 
 ### `npm run test`
 
-Run Jest tests.
+Run Jest tests. `npm run test -- --coverage`
 
 ![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/test.png?raw=true)
