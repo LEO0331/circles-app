@@ -6,15 +6,19 @@ const FilteredColorsSection = ({ filteredColors, handleFilterRemove, handleClear
     <div className="filtered-colors-section">
       <div className="filtered-header">
         <h2>Filtered Colours</h2>
-        <button onClick={handleClearAll}>Clear All</button>
+        <button type="button" onClick={handleClearAll}>Clear All</button>
       </div>
       {filteredColors.map(color => (
         <div key={color} className="filtered-color">
-          <span
+          <button
+            type="button"
             className="color-circle"
             style={{ backgroundColor: color }}
             onClick={() => handleFilterRemove(color)}
-          ></span>
+            aria-label={`Remove filter ${color}`}
+            title={`Remove filter ${color}`}
+          ></button>
+          <span className="filtered-color-code">{color}</span>
         </div>
       ))}
     </div>

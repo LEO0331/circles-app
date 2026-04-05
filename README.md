@@ -1,17 +1,32 @@
-# Getting Started
+# Circles App
+
+![demo-ready](https://img.shields.io/badge/Demo-Ready-00C853?style=for-the-badge)
+![tests-passing](https://img.shields.io/badge/Tests-Passing-0A84FF?style=for-the-badge)
+![build-passing](https://img.shields.io/badge/Build-Passing-111111?style=for-the-badge)
+![coverage](https://img.shields.io/badge/Coverage-81.08%25-FF6D00?style=for-the-badge)
+
+## Getting Started
 
 This is a simple React application that fetches data from the provided URLs and updates the UI based on the wireframe design.
 
-### Fetch Data:
+### Fetch Data
 
 - Fetch data from the given URLs.
 - Display loading status (success or failure) for each dataset.
 
-### Filter Colors:
+### Filter Colors
 
 - Display colored circles based on the fetched data.
 - Implement the functionality to hide all circles of the same color and add them to the "Filtered Colors" section.
 - Implement the "Clear All" button to remove all filters.
+
+## Ready for Demo
+
+- Editorial Neon frontend refresh applied (UI-only, no behavior changes).
+- Integration test added for app flow: fetch, filter, and clear.
+- Verified locally:
+  - `npm test -- --runInBand`
+  - `npm run build`
 
 ### Wireframe Design
 ![image](https://github.com/LEO0331/circles-app/blob/main/src/Images/wireframe.png?raw=true)

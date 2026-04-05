@@ -65,29 +65,58 @@ function App() {
 
   return (
     <div className="App">
-      {/* Sidebar containing data loading and filtered colors sections */}
-      <div className="sidebar">
-        <DataLoadingSection loadingStatus={loadingStatus} />
-        <FilteredColorsSection 
-          filteredColors={filteredColors} 
-          handleFilterRemove={handleFilterRemove} 
-          handleClearAll={handleClearAll} 
-        />
-      </div>
+      <div className="ambient-glow ambient-glow-left"></div>
+      <div className="ambient-glow ambient-glow-right"></div>
 
-      {/* Section containing circles */}
-      <div className="circles-section">
-        {data.map(item => (
-          !isColorFiltered(item.color) && (
-            <span
-              key={item.id}
-              className="color-circle"
-              style={{ backgroundColor: item.color }}
-              onClick={() => handleCircleClick(item.color)}
-            ></span>
-          )
-        ))}
-      </div>
+      <main className="demo-layout">
+        <header className="hero">
+          <p className="hero-kicker">Interactive Demo</p>
+          <h1 className="hero-title">Chromatic Pulse Board</h1>
+          <p className="hero-subtitle">
+            Click any circle to filter that color out. Remove filters from the panel.
+          </p>
+        </header>
+
+        {/* Sidebar containing data loading and filtered colors sections */}
+        <section className="sidebar">
+          <div className="panel-card panel-card-delay-1">
+            <DataLoadingSection loadingStatus={loadingStatus} />
+          </div>
+          <div className="panel-card panel-card-delay-2">
+            <FilteredColorsSection
+              filteredColors={filteredColors}
+              handleFilterRemove={handleFilterRemove}
+              handleClearAll={handleClearAll}
+            />
+          </div>
+        </section>
+
+        {/* Section containing circles */}
+        <section className="circles-shell panel-card panel-card-delay-3">
+          <div className="circles-header">
+            <h2>Color Field</h2>
+            <p>Select to filter</p>
+          </div>
+          <div className="circles-section">
+            {data.map(item => (
+              !isColorFiltered(item.color) && (
+                <button
+                  key={item.id}
+                  type="button"
+                  className="color-circle"
+                  style={{ backgroundColor: item.color }}
+                  onClick={() => handleCircleClick(item.color)}
+                  aria-label={`Filter color ${item.color}`}
+                  title={`Filter color ${item.color}`}
+                ></button>
+              )
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <div className="scanline-overlay"></div>
+      <div className="grain-overlay"></div>
     </div>
   );
 }
