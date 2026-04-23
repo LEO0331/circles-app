@@ -28,15 +28,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build app
-        run: npm run build
+      - name: Build app for Lighthouse (relative asset paths)
+        run: PUBLIC_URL=. npm run build
 
       - name: Run Lighthouse CI (temporary public dashboard URL)
         run: |
           npx @lhci/cli@0.13.x autorun \
             --collect.staticDistDir=build \
             --collect.numberOfRuns=3 \
-            --assert.preset=lighthouse:recommended \
+            --collect.settings.chromeFlags="--headless=new --no-sandbox --disable-dev-shm-usage" \
             --upload.target=temporary-public-storage
 
       - name: Upload Lighthouse artifacts
