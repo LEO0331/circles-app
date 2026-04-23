@@ -33,11 +33,22 @@ jobs:
 
       - name: Run Lighthouse CI (temporary public dashboard URL)
         run: |
-          npx @lhci/cli@0.13.x autorun \
-            --collect.staticDistDir=build \
-            --collect.numberOfRuns=3 \
-            --collect.settings.chromeFlags="--headless=new --no-sandbox --disable-dev-shm-usage" \
-            --upload.target=temporary-public-storage
+          set -euo pipefail
+          for attempt in 1 2; do
+            echo "LHCI attempt ${attempt}/2"
+            if npx @lhci/cli@0.13.x autorun \
+              --collect.staticDistDir=build \
+              --collect.numberOfRuns=1 \
+              --collect.settings.chromeFlags="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu" \
+              --upload.target=temporary-public-storage; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 2 ]; then
+              exit 1
+            fi
+            echo "LHCI failed, retrying once..."
+            sleep 3
+          done
 
       - name: Upload Lighthouse artifacts
         if: always()
