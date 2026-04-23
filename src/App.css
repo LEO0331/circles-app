@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap");
-
 :root {
   --bg-ink: #05060a;
   --bg-panel: rgba(10, 14, 28, 0.74);
@@ -26,7 +24,7 @@ body {
     radial-gradient(circle at 84% 18%, rgba(255, 111, 143, 0.24), rgba(255, 111, 143, 0) 34%),
     linear-gradient(132deg, #05060a 0%, #080b12 48%, #0a0f1e 100%);
   color: var(--text-primary);
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 .App {
@@ -60,7 +58,7 @@ body {
   margin: 0;
   max-width: 18ch;
   font-size: clamp(2rem, 5.2vw, 4.4rem);
-  font-family: "Bebas Neue", "Impact", sans-serif;
+  font-family: "Arial Narrow", "Franklin Gothic Medium", "Impact", sans-serif;
   letter-spacing: 0.045em;
   line-height: 0.92;
   text-transform: uppercase;
@@ -91,6 +89,8 @@ body {
     var(--bg-panel);
   box-shadow: var(--shadow-neon);
   backdrop-filter: blur(10px);
+  content-visibility: auto;
+  contain-intrinsic-size: 260px;
   padding: 18px 18px 16px;
   animation: panel-enter 700ms ease both;
 }
@@ -261,7 +261,7 @@ button:focus-visible {
   z-index: 1;
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(70px);
+  filter: blur(54px);
   opacity: 0.55;
 }
 
@@ -347,5 +347,15 @@ button:focus-visible {
   .circles-section .color-circle {
     width: 40px;
     height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
