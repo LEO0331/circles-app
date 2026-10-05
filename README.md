@@ -8,6 +8,9 @@
 
 ## Getting Started
 
+Use Node.js 24 LTS (minimum 22.12) and npm. The app uses Vite for development
+and production builds, with Jest for tests.
+
 This is a simple React application that fetches data from the provided URLs and updates the UI based on the wireframe design.
 
 ### Fetch Data
@@ -50,6 +53,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser. 
 ### `npm install`
 
 Install all dependencies.
+
+Use `npm ci` for a reproducible install from the lockfile.
+
+### `npm run check`
+
+Runs lint, all Jest tests, and the production build.
+
+### `npm run build` and `npm run preview`
+
+Builds static files into `build/` with the `/circles-app/` GitHub Pages base path.
+Preview the build at `http://127.0.0.1:4173/circles-app/`.
+For relative asset URLs (such as Lighthouse CI), set `PUBLIC_URL=.` when building.
+Development and preview servers bind to localhost.
+
+Production JavaScript targets ES2015 syntax and requires modern browsers;
+the build does not add legacy browser polyfills.
+
+The former Create React App toolchain was replaced to remove vulnerable
+webpack development-server and build dependencies. Jest's Babel dependencies
+are now declared explicitly. Vite replaces the former `eject` command.
 
 ### `npm run test`
 
